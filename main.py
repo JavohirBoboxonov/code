@@ -28,3 +28,19 @@
 # first-# group by p.product_name, od.quantity, o.order_id, o.employee_id, e.first_name, e.last_name, e.country, e.city
 # first-# order by od.quantity desc
 # first-# limit 5;
+
+
+# first=# select e.employee_id, o.required_date, o.shipped_date, od.quantity, p.product_name from products as p
+# inner join order_details as od on od.product_id = p.product_id
+# inner join orders as o on o.order_id = od.order_id
+# inner join employees as e on o.employee_id = e.employee_id
+# where od.quantity >= 3 and o.required_date = o.shipped_date
+# group by e.employee_id, o.required_date, o.shipped_date, od.quantity, p.product_name
+# order by od.quantity desc;
+
+
+# first=# select e.country, e.employee_id, count(o.order_id) as total_orders from employees as e
+# first-# inner join orders as o on e.employee_id = o.employee_id
+# first-# where e.country = 'USA'
+# first-# group by e.country, e.employee_id
+# first-# order by total_orders desc;
